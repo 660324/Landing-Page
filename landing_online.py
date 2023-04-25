@@ -14,7 +14,8 @@ st.text("")
 
 c1, c2, c3 = st.columns([5, 0.1, 1])
 with c1:
-    search1 = st.text_input('Search Box (optional)', help='To search, type in key words and press enter; To cancel search, clear all texts in the search box and press enter')
+    search1 = st.text_input('Search Box (To search, type in key words and press Enter; To cancel search, clear all texts in the search box and press enter)',
+                            help='Will return resources where name or contents contain the words searched here')
 with c3:
     option1 = st.radio("Search By", ('Name','Contents'),horizontal=True)
 st.text("")
