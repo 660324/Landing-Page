@@ -58,7 +58,7 @@ with d7:
     st.subheader("Visit",anchor=None)
 st.divider()
 
-
+@st.cache_data
 def get_df():
     url = 'https://github.com/660324/Landing-Page/blob/main/inventory.pkl?raw=true'
     df = pd.read_pickle(url)
