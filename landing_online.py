@@ -59,7 +59,6 @@ with d7:
 st.divider()
 
 
-@st.cache_resource( )
 def get_df():
     url = 'https://github.com/660324/Landing-Page/blob/main/inventory.pkl?raw=true'
     df = pd.read_pickle(url)
