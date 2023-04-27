@@ -35,7 +35,7 @@ c1, c2 = st.columns([1, 2])
 with c1:
     sortby = st.radio("Sort By", ('Name','Type','Data Domain', 'Responsible Office'),horizontal=True)
 with c2:
-    orderby = st.radio("Sort Order", ('Ascendingly', 'Descendingly'), horizontal=True)
+    orderby = st.radio("Sort Order", ('Ascending', 'Descending'), horizontal=True)
 st.text("")
 st.text("")
 st.text("")
@@ -58,10 +58,11 @@ with d7:
     st.subheader("Visit",anchor=None)
 st.divider()
 
+
 @st.cache_data
 def get_df():
-    url = 'https://github.com/660324/Landing-Page/blob/main/inventory.pkl?raw=true'
-    df = pd.read_pickle(url)
+    url = 'https://github.com/660324/Landing-Page/blob/main/inventory.csv?raw=true'
+    df = pd.read_csv(url,index_col=False)
     return df
 
 #df=original_df[original_df['Include']=='Yes']
@@ -83,31 +84,30 @@ if level==[]:
 df=df[df['Data Domain'].apply(lambda x: any(word in x for word in domain)) & df['Type'].apply(lambda x: any(word in x for word in type))
                & df['Access Levels'].apply(lambda x: any(word in x for word in level)) & df[k].str.contains(search1,case=False) ]
 
-
-if orderby=='Ascendingly' :
+if orderby=='Ascending' :
     orderby=True
-if orderby=='Descendingly' :
+if orderby=='Descending' :
     orderby=False
 
 df=df.sort_values(by=sortby, ascending=orderby)
 
+list = df.values.tolist()
 
-for i,j in df.iterrows():
+for i in list:
     e1, e2, e3, e4, e5, e6, e7 = st.columns([2, 1, 3, 1, 1.5, 1, 0.5])
     with e1:
-        st.write(j['Name'].replace("\n", " "))
+        st.write(i[1].replace("\n", " "))
     with e2:
-        st.write(j['Type'].replace("\n", " "))
+        st.write(i[3].replace("\n", " "))
     with e3:
-        st.write(j['Contents'].replace("\n", " "))
+        st.write(i[4].replace("\n", " "))
     with e4:
-        st.write(j['Data Domain'].replace("\n", " "))
+        st.write(i[5].replace("\n", " "))
     with e5:
-        st.write(j['Responsible Office'].replace("\n", " "))
+        st.write(i[6].replace("\n", " "))
     with e6:
-        st.write(j['Access Levels'].replace("\n", " "))
+        st.write(i[7].replace("\n", " "))
     with e7:
-        link="[Visit]"+"("+ j['Hyperlink']+")"
+        link="[Visit]"+"("+ i[2]+")"
         st.write(link)
     st.divider()
-
