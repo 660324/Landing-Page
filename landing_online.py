@@ -8,13 +8,6 @@ st.set_page_config(layout="wide")  #use 'wide' mode and use column controls to m
 
 #streamlit run "C:/Users/yuhao1/Desktop/diversity/landing_online.py"
 
-st.write("username:", st.secrets["username"])
-st.write("password:", st.secrets["password"])
-st.write(
-    "Has environment variables been set:",
-    os.environ["username"] == st.secrets["password"],
-)
-
 st.title('Office of Institutional Research and Assessment Data Inventory')
 st.text("")
 st.text("")
