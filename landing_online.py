@@ -2,10 +2,18 @@ import pandas as pd
 import streamlit as st
 import io
 import requests
+import os
 pd.set_option('display.max_columns', None)
 st.set_page_config(layout="wide")  #use 'wide' mode and use column controls to make it two-column website?
 
 #streamlit run "C:/Users/yuhao1/Desktop/diversity/landing_online.py"
+
+st.write("username:", st.secrets["Yuhao"])
+st.write("password:", st.secrets["12345"])
+st.write(
+    "Has environment variables been set:",
+    os.environ["Yuhao"] == st.secrets["12345"],
+)
 
 st.title('Office of Institutional Research and Assessment Data Inventory')
 st.text("")
